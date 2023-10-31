@@ -10,7 +10,7 @@ set_chat_lang: "Great, using {} Language it is from now on!"
 # PM Text
 pm_start_text: |
   *Hey Darling, {} ❤️*
-  ✪ I'm an anime-theme management robot [✨](https://telegra.ph/file/6d3e3ef24f64fb6e35df0.jpg)
+  ✪ I'm an anime-theme management robot [✨](https://te.legra.ph/file/2a1928ed18be894d76f97.jpg)
 
   ┏━━━━━━━━•❃°•°❀°•°❃•━━━━━━━━┓
   × *Server Uptime :* `{}`
@@ -20,12 +20,12 @@ pm_start_text: |
   ✪ Hit /help to see my available commands.
    
 group_start_text: |
-  *👋🏻 Hi Darling, I'm Dasha!*
+  *👋🏻 Hi Darling, I'm Oasis Chat Room Manager!*
   
   *Started active since :* `{}`
 
 pm_about_text: |
-  ✺ Hey Darling I'm *Dasha*, a powerful group management bot built to help you manage your group easily. ✺
+  ✺ Hey Darling I'm *Oasis Chat Room Manager*, a powerful group management bot built to help you manage your group easily. ✺
 
   ✪ I can restrict users.
   ✪ I can greet users with customizable welcome messages and even set a group's rules.
@@ -34,12 +34,12 @@ pm_about_text: |
   ✪ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
   ✪ I check for admins' permissions before executing any command and more stuffs
 
-  _Dasha's licensed under the GNU General Public License v3.0_
-  Click on button bellow to get basic help for Dasha.
+  _Oasis Chat Room Manager's licensed under the GNU General Public License v3.0_
+  Click on button bellow to get basic help for Oasis Chat Room Manager.
 pm_about_admin_text: |
   *✺ Let's make your group bit effective now ✺*
 
-  Congragulations, Dasha now ready to manage your group.
+  Congragulations, Oasis Chat Room Manager now ready to manage your group.
 
   *Admin Tools*
   Basic Admin tools help you to protect and powerup your group.
@@ -54,13 +54,13 @@ pm_about_notes_text: |
   ✪ You can save message/media/audio or anything as notes to get a note simply use # at the beginning of a word
   ✪ You can also set buttons for notes and filters (refer help menu)
 pm_about_support_text: |
-  *✺ Dasha support chats ✺*
+  *✺ Oasis Chat Room Manager support chats ✺*
 
-  Join My Support Group/Channel for see or report a problem on Dasha.
+  Join My Support Group/Channel for see or report a problem on Oasis Chat Room Manager.
 pm_about_credit_text: |
-  *✺ Credis for Dasha ✺*
+  *✺ Credis for Oasis Chat Room Manager ✺*
 
-  Here Developers Making And Give Inspiration For Made The Dasha
+  Here Developers Making And Give Inspiration For Made The Oasis Chat Room Manager
 pm_help_text: |
   *✺ Click on the button bellow to get description about specifics command. ✺*
 pm_help_module_text: "Here is the help for the *{}* module :\n\n"
@@ -89,7 +89,7 @@ notes_button: "Notes"
 source_button: "Source Code"
 help_button: "Get Help"
 back_button: "Go back"
-about_button: "About Dasha"
+about_button: "About Oasis Chat Room Manager"
 inline_button: "Try inline!​​"
 
 # MODULES
@@ -248,7 +248,7 @@ blacklist_help: |
 chatbot_help: |
     ──「 Chatbot AI 」──
 
-    Dasha AI is the only ai system which can detect & reply upto 200 language's
+    Oasis Chat Room Manager AI is the only ai system which can detect & reply upto 200 language's
 
     ❂ /chatbot [ON/OFF]: Enables and disables AI Chat mode.
     ❂ /chatbot EN : Enables English only chatbot.
@@ -344,7 +344,7 @@ fsub_feds_help: |
 
     *Force Subscribe:*
 
-    Dasha can mute members who are not subscribed your channel until they subscribe When enabled I will mute unsubscribed members and show them a unmute button. When they pressed the button I will unmute them
+    Oasis Chat Room Manager can mute members who are not subscribed your channel until they subscribe When enabled I will mute unsubscribed members and show them a unmute button. When they pressed the button I will unmute them
 
     *Setup* *:* *Only creator*
     ❂ Add me in your group as admin
@@ -663,9 +663,9 @@ search_help: |
     ❂ /github <username>*:* Get information about a GitHub user.
     ❂ /country <country name>*:* Gathering info about given country
     ❂ /imdb <Movie name>*:* Get full info about a movie with imdb.com
-    ❂ Dasha <query>*:* Dasha answers the query
+    ❂ Oasis Chat Room Manager <query>*:* Oasis Chat Room Manager answers the query
 
-    💡 Ex : `Dasha where is Japan?`
+    💡 Ex : `Oasis Chat Room Manager where is Japan?`
 stickers_help: |
     ──「 Stickers 」──
 
