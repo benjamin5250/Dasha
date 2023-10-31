@@ -32,7 +32,7 @@ This feature inspired from SangMata Bot. I'm created simple detection to check u
     filters.group & ~filters.bot & ~filters.via_bot,
     group=5,
 )
-async def cek_mataa(_, ctx: Message, strings):
+async def cek_mataa(_, ctx: Message):
     if ctx.sender_chat or not await is_sangmata_on(ctx.chat.id):
         return
     if not await cek_userdata(ctx.from_user.id):
