@@ -10,6 +10,10 @@ from database.sangmata_db import (
     sangmata_on,
 )
 from dasha import app
+from Dasha.modules.helper_funcs.chat_status import (
+    is_user_ban_protected,
+    user_admin,
+)
 
 __MODULE__ = "SangMata"
 __HELP__ = """"
@@ -89,6 +93,7 @@ async def cek_mataa(_, ctx: Message, strings):
     & ~filters.via_bot
 )
 
+@user_admin
 async def set_mataa(_, ctx: Message, strings):
     if len(ctx.command) == 1:
         return await ctx.reply_msg(
