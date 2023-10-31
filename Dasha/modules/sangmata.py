@@ -91,7 +91,7 @@ async def cek_mataa(_, ctx: Message, strings):
 
 @app.on_message(
     filters.group
-    & filters.command("sangmata_set", COMMAND_HANDLER)
+    & filters.command("sangmata_set")
     & ~filters.bot
     & ~filters.via_bot
 )
