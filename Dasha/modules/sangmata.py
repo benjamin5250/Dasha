@@ -31,7 +31,6 @@ This feature inspired from SangMata Bot. I'm created simple detection to check u
     filters.group & ~filters.bot & ~filters.via_bot,
     group=5,
 )
-@use_chat_lang()
 async def cek_mataa(_, ctx: Message, strings):
     if ctx.sender_chat or not await is_sangmata_on(ctx.chat.id):
         return
