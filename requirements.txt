@@ -55,7 +55,7 @@ asyncio
 cloudscraper
 dateparser
 pymongo
-dnspython
+dnspython==2.3.0
 secureme
 apscheduler
 emoji-country-flag
