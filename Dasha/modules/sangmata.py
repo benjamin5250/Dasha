@@ -2,7 +2,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 from Dasha.vars import COMMAND_HANDLER
 
-from database.sangmata_db import (
+from Dasha.ex_plugins.dbfunctions import (
     add_userdata,
     cek_userdata,
     get_userdata,
