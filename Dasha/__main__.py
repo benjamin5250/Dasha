@@ -217,7 +217,7 @@ def start(update: Update, context: CallbackContext):
                         ],
                         [
                             InlineKeyboardButton(
-                                text=gs(chat.id, "add_bot_to_group_button"), url="t.me/Dashaxbot?startgroup=new"),
+                                text=gs(chat.id, "add_bot_to_group_button"), url="t.me/OasisManageBot?startgroup=new"),
                         ]
                     ]
                 ),
@@ -390,7 +390,7 @@ def Dasha_about_callback(update, context):
                         InlineKeyboardButton(text="Credits", callback_data="Dasha_credit"),
                     ],
                     [
-                        InlineKeyboardButton(text=gs(chat.id, "source_button"), url="https://t.me/DashaOfficialUpdates/4"),
+                        InlineKeyboardButton(text=gs(chat.id, "source_button"), url="https://t.me/ParadiseXChannel/"),
                     ],
                     [
                     InlineKeyboardButton(text=gs(chat.id, "back_button"), callback_data="Dasha_back"),
@@ -417,7 +417,7 @@ def Dasha_about_callback(update, context):
                             InlineKeyboardButton(text=gs(chat.id, "inline_button"), switch_inline_query_current_chat=""),
                         ],
                         [
-                            InlineKeyboardButton(text=gs(chat.id, "add_bot_to_group_button"), url="t.me/MizoDashaBot?startgroup=new"),
+                            InlineKeyboardButton(text=gs(chat.id, "add_bot_to_group_button"), url="t.me/OasisManageBot?startgroup=new"),
                         ]
                     ]
                 ),
@@ -459,8 +459,8 @@ def Dasha_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text=gs(chat.id, "support_chat_link_button"), url="https://t.me/DashaOfficialUpdates"),
-                        InlineKeyboardButton(text=gs(chat.id, "updates_channel_link_button"), url="https://t.me/DashaOfficialUpdates"),
+                        InlineKeyboardButton(text=gs(chat.id, "support_chat_link_button"), url="https://t.me/ParadiseXChannel"),
+                        InlineKeyboardButton(text=gs(chat.id, "updates_channel_link_button"), url="https://t.me/ParadiseXSupport"),
                     ],
                     [
                         InlineKeyboardButton(text=gs(chat.id, "back_button"), callback_data="Dasha_"),
@@ -528,7 +528,7 @@ def Source_about_callback(update, context):
                             InlineKeyboardButton(text=gs(chat.id, "inline_button"), switch_inline_query_current_chat=""),
                         ],
                         [
-                            InlineKeyboardButton(text=gs(chat.id, "add_bot_to_group_button"), url="t.me/MizoDashaBot?startgroup=new"),
+                            InlineKeyboardButton(text=gs(chat.id, "add_bot_to_group_button"), url="t.me/OasisManageBot?startgroup=new"),
                         ]
                     ]
                 ),
