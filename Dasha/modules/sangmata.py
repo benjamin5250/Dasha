@@ -90,11 +90,7 @@ async def cek_mataa(_, ctx: Message, strings):
         await ctx.reply_msg(msg, quote=False)
 
 
-@app.on_message(
-    filters.group
-    & filters.command("sangmata_set", COMMAND_HANDLER)
-    & ~filters.bot
-    & ~filters.via_bot
+@app.on_message(filters.command("sangmata_set"))
 )
 
 @user_admin
@@ -119,3 +115,5 @@ async def set_mataa(_, ctx: Message, strings):
             await ctx.reply_msg(strings("sangmata_disabled"))
     else:
         await ctx.reply_msg(strings("wrong_param"), del_in=6)
+
+
