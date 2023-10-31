@@ -1,6 +1,3 @@
-from database import dbname
-
-matadb = dbname["sangmata"]
 
 
 # Get Data User
