@@ -19,7 +19,7 @@ from Dasha.modules.helper_funcs.string_handling import (
     escape_invalid_curly_brackets,
     markdown_parser,
 )
-__MODULE__ = "SangMata"
+__mod__ = "SangMata"
 __HELP__ = """"
 This feature inspired from SangMata Bot. I'm created simple detection to check user data include username, first_name, and last_name.
 /sangmata_set [on/off] - Enable/disable sangmata in groups.
