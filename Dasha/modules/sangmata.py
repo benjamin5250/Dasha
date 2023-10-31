@@ -1,5 +1,6 @@
 from pyrogram import filters
 from pyrogram.types import Message
+from Dasha.vars import COMMAND_HANDLER
 
 from database.sangmata_db import (
     add_userdata,
@@ -91,7 +92,7 @@ async def cek_mataa(_, ctx: Message, strings):
 
 @app.on_message(
     filters.group
-    & filters.command("sangmata_set")
+    & filters.command("sangmata_set", COMMAND_HANDLER)
     & ~filters.bot
     & ~filters.via_bot
 )
