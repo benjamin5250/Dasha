@@ -1,95 +1,112 @@
-from telethon.errors.rpcerrorlist import YouBlockedUserError
-from Dasha import telethn as tbot
-from Dasha.events import register
-from Dasha import ubot2 as ubot
-from asyncio.exceptions import TimeoutError
+from pyrogram import filters
+from pyrogram.types import Message
+
+from database.sangmata_db import (
+    add_userdata,
+    cek_userdata,
+    get_userdata,
+    is_sangmata_on,
+    sangmata_off,
+    sangmata_on,
+)
+from dasha import app
+
+__MODULE__ = "SangMata"
+__HELP__ = """"
+This feature inspired from SangMata Bot. I'm created simple detection to check user data include username, first_name, and last_name.
+/sangmata_set [on/off] - Enable/disable sangmata in groups.
+"""
 
 
-@register(pattern="^/sg ?(.*)")
-async def lastname(steal):
-    steal.pattern_match.group(1)
-    puki = await steal.reply("```Retrieving Such User Information..```")
-    if steal.fwd_from:
+# Check user that change first_name, last_name and usernaname
+@app.on_message(
+    filters.group & ~filters.bot & ~filters.via_bot,
+    group=5,
+)
+@use_chat_lang()
+async def cek_mataa(_, ctx: Message, strings):
+    if ctx.sender_chat or not await is_sangmata_on(ctx.chat.id):
         return
-    if not steal.reply_to_msg_id:
-        await puki.edit("```Please Reply To User Message.```")
-        return
-    message = await steal.get_reply_message()
-    chat = "@SangMataInfo_bot"
-    user_id = message.sender.id
-    id = f"/search_id {user_id}"
-    if message.sender.bot:
-        await puki.edit("```Reply To Real User's Message.```")
-        return
-    await puki.edit("```Please wait...```")
-    try:
-        async with ubot.conversation(chat) as conv:
-            try:
-                msg = await conv.send_message(id)
-                r = await conv.get_response()
-                response = await conv.get_response()
-            except YouBlockedUserError:
-                await steal.reply(
-                    "```Error, report to @kenbotsupport```"
-                )
-                return
-            if r.text.startswith("Name"):
-                respond = await conv.get_response()
-                await puki.edit(f"`{r.message}`")
-                await ubot.delete_messages(
-                    conv.chat_id, [msg.id, r.id, response.id, respond.id]
-                ) 
-                return
-            if response.text.startswith("No records") or r.text.startswith(
-                "No records"
-            ):
-                await puki.edit("```I Can't Find This User's Information, This User Has Never Changed His Name Before.```")
-                await ubot.delete_messages(
-                    conv.chat_id, [msg.id, r.id, response.id]
-                )
-                return
-            else:
-                respond = await conv.get_response()
-                await puki.edit(f"```{response.message}```")
-            await ubot.delete_messages(
-                conv.chat_id, [msg.id, r.id, response.id, respond.id]
-            )
-    except TimeoutError:
-        return await puki.edit("`I'm Sick Sorry...`")
+    if not await cek_userdata(ctx.from_user.id):
+        return await add_userdata(
+            ctx.from_user.id,
+            ctx.from_user.username,
+            ctx.from_user.first_name,
+            ctx.from_user.last_name,
+        )
+    usernamebefore, first_name, lastname_before = await get_userdata(ctx.from_user.id)
+    msg = ""
+    if (
+        usernamebefore != ctx.from_user.username
+        or first_name != ctx.from_user.first_name
+        or lastname_before != ctx.from_user.last_name
+    ):
+        msg += f"👀 <b>Mata MissKaty</b>\n\n🌞 User: {ctx.from_user.mention} [<code>{ctx.from_user.id}</code>]\n"
+    if usernamebefore != ctx.from_user.username:
+        usernamebefore = f"@{usernamebefore}" if usernamebefore else strings("no_uname")
+        usernameafter = (
+            f"@{ctx.from_user.username}"
+            if ctx.from_user.username
+            else strings("no_uname")
+        )
+        msg += strings("uname_change_msg").format(bef=usernamebefore, aft=usernameafter)
+        await add_userdata(
+            ctx.from_user.id,
+            ctx.from_user.username,
+            ctx.from_user.first_name,
+            ctx.from_user.last_name,
+        )
+    if first_name != ctx.from_user.first_name:
+        msg += strings("firstname_change_msg").format(
+            bef=first_name, aft=ctx.from_user.first_name
+        )
+        await add_userdata(
+            ctx.from_user.id,
+            ctx.from_user.username,
+            ctx.from_user.first_name,
+            ctx.from_user.last_name,
+        )
+    if lastname_before != ctx.from_user.last_name:
+        lastname_before = lastname_before or strings("no_last_name")
+        lastname_after = ctx.from_user.last_name or strings("no_last_name")
+        msg += strings("lastname_change_msg").format(
+            bef=lastname_before, aft=lastname_after
+        )
+        await add_userdata(
+            ctx.from_user.id,
+            ctx.from_user.username,
+            ctx.from_user.first_name,
+            ctx.from_user.last_name,
+        )
+    if msg != "":
+        await ctx.reply_msg(msg, quote=False)
 
 
+@app.on_message(
+    filters.group
+    & filters.command("sangmata_set", COMMAND_HANDLER)
+    & ~filters.bot
+    & ~filters.via_bot
+)
 
-@register(pattern="^/quotly ?(.*)")
-async def quotess(qotli):
-    if qotli.fwd_from:
-        return
-    if not qotli.reply_to_msg_id:
-        return await qotli.reply("```Mohon Balas Ke Pesan```")
-    reply_message = await qotli.get_reply_message()
-    if not reply_message.text:
-        return await qotli.reply("```Mohon Balas Ke Pesan```")
-    chat = "@QuotLyBot"
-    if reply_message.sender.bot:
-        return await qotli.reply("```Mohon Balas Ke Pesan```")
-    await qotli.reply("```Sedang Memproses Sticker, Mohon Menunggu```")
-    try:
-        async with ubot.conversation(chat) as conv:
-            try:
-                response = await conv.get_response()
-                msg = await ubot.forward_messages(chat, reply_message)
-                response = await response
-                """ - don't spam notif - """
-                await ubot.send_read_acknowledge(conv.chat_id)
-            except YouBlockedUserError:
-                return await qotli.edit("```Harap Jangan Blockir @QuotLyBot Buka Blokir Lalu Coba Lagi```")
-            if response.text.startswith("Hi!"):
-                await qotli.edit("```Mohon Menonaktifkan Pengaturan Privasi Forward Anda```")
-            else:
-                await qotli.delete()
-                await tbot.send_message(qotli.chat_id, response.message)
-                await tbot.send_read_acknowledge(qotli.chat_id)
-                """ - cleanup chat after completed - """
-                await ubot.delete_messages(conv.chat_id,
-                                              [msg.id, response.id])
-    except TimeoutError:
-        await qotli.edit()
+async def set_mataa(_, ctx: Message, strings):
+    if len(ctx.command) == 1:
+        return await ctx.reply_msg(
+            strings("set_sangmata_help").format(cmd=ctx.command[0]), del_in=6
+        )
+    if ctx.command[1] == "on":
+        cekset = await is_sangmata_on(ctx.chat.id)
+        if cekset:
+            await ctx.reply_msg(strings("sangmata_already_on"))
+        else:
+            await sangmata_on(ctx.chat.id)
+            await ctx.reply_msg(strings("sangmata_enabled"))
+    elif ctx.command[1] == "off":
+        cekset = await is_sangmata_on(ctx.chat.id)
+        if not cekset:
+            await ctx.reply_msg(strings("sangmata_already_off"))
+        else:
+            await sangmata_off(ctx.chat.id)
+            await ctx.reply_msg(strings("sangmata_disabled"))
+    else:
+        await ctx.reply_msg(strings("wrong_param"), del_in=6)
