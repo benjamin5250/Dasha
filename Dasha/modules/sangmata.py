@@ -9,7 +9,7 @@ from database.sangmata_db import (
     sangmata_off,
     sangmata_on,
 )
-from Dasha import app
+from Dasha import pbot as app
 from Dasha.modules.helper_funcs.chat_status import (
     is_user_ban_protected,
     user_admin,
