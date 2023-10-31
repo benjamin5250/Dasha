@@ -91,7 +91,6 @@ async def cek_mataa(_, ctx: Message, strings):
 
 
 @app.on_message(filters.command("sangmata_set"))
-)
 
 @user_admin
 async def set_mataa(_, ctx: Message, strings):
