@@ -32,7 +32,7 @@ blacklist_chatdb = db.blacklistChat
 restart_stagedb = db.restart_stage
 flood_toggle_db = db.flood_toggle
 rssdb = db.rss
-
+matadb=db.mata
 
 def obj_to_str(obj):
     if not obj:
